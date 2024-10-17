@@ -9,4 +9,7 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'registro', component: RegistroComponent},
     { path: 'alta-chofer', component: AltaChoferComponent},
+    {  path: "detalle-chofer", 
+        loadComponent: () => import('./componentes/detalle-chofer/detalle-chofer.component').then(m => m.DetalleChoferComponent)
+    },
 ];

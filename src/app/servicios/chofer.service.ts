@@ -24,7 +24,7 @@ export class ChoferService {
     this.angularF.collection(this.dbPath).doc(id).set(producto.toJson());
   }
 
-  obtenerProductos(){
+  obtenerChofer(){
     let aux : Array<Chofer> = [];
     this.choferes.forEach(element => {
       element.forEach(res => {
