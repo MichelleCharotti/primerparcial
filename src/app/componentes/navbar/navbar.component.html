@@ -1,0 +1,17 @@
+<nav>
+    <div class="left">
+       <!-- <img   src="../../../assets/iconogame.png" alt="i"> -->
+   
+        <h1>Laboratorio 4</h1>
+    </div>
+
+    <div class="right" id="navbarSupportedContent">
+        <button routerLink="">Home</button>
+         <button [disabled]="!usuarioService.estaLogueado" routerLink="alta-chofer">Alta Chofer</button>
+      <!--  <button [disabled]="!usuarioService.estaLogueado" routerLink="detalle-producto">Detalle Producto</button> 
+        <button *ngIf="usuarioService.estaLogueado && usuarioService.esAdministrador" routerLink="container">Container</button> -->
+        <button  routerLink="login">Login</button>
+        <button  (click)="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+</nav>
+

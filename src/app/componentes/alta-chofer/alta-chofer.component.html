@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="py-5 text-center">
+      <h2>Alta Producto</h2>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <app-tabla-paises (eventoPaisSeleccionado)="cargarPaisSeleccionado($event)"></app-tabla-paises>
+      </div>
+  
+  
+      <div class="col-md-8 order-md-1">
+        <form class="needs-validation" [formGroup]="formGroup" (ngSubmit)="altaChofer()">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="firstName">dni</label>
+              <input type="text" class="form-control" id="firstName" formControlName="dni" maxlength="8">
+              <small class="invalid" *ngIf="formGroup.controls['dni'].errors?.['required'] && formGroup.controls['dni'].touched">El dni es requerido</small>
+              <p class="text-danger warningForm" *ngIf="formGroup.controls['nroLicencia'].errors?.['maxlength']" >
+                debe ser 8
+            </p>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="firstName">nombre</label>
+              <input type="text" class="form-control" id="firstName" formControlName="nombre">
+              <small class="invalid" *ngIf="formGroup.controls['nombre'].errors?.['required'] && formGroup.controls['nombre'].touched">la nombre es requerido</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="edad">edad</label>
+            <input type="number" class="form-control" id="edad" formControlName="edad" min="18" max="50">
+            <small class="invalid" *ngIf="formGroup.controls['edad'].errors?.['required'] && formGroup.controls['edad'].touched">el edad es requerida</small>
+            <p class="text-danger warningForm" *ngIf="formGroup.controls['edad'].errors?.['min']" >
+                debe ser mayor a 18
+            </p>
+            <p class="text-danger warningForm" *ngIf="formGroup.controls['edad'].errors?.['max']" >
+                debe ser menor a 99
+            </p>  
+        
+        </div>
+          <div class="mb-3">
+            <label for="nroLicencia">nroLicencia</label>
+            <input type="number" class="form-control" id="nroLicencia" formControlName="nroLicencia" minlength="7">
+            <small class="invalid" *ngIf="formGroup.controls['nroLicencia'].errors?.['required'] && formGroup.controls['nroLicencia'].touched">el nro licencia es requerida</small>
+            <p class="text-danger warningForm" *ngIf="formGroup.controls['nroLicencia'].errors?.['minlength']" >
+                debe ser minimo 7
+            </p>    
+        </div>
+        
+  
+            <div class="mb-3">
+              <label for="formFile" class="form-label">licenciaProfecional</label>
+              <select class="form-select" aria-label="Default select example" formControlName="licenciaProfecional">
+                  <option value="si">Si</option>
+                  <option value="no">No</option>
+              </select>
+              <small class="invalid" *ngIf="formGroup.controls['licenciaProfecional'].errors?.['required'] 
+              && formGroup.controls['licenciaProfecional'].touched">Debe seleccionar una opcion.</small>
+
+              
+          </div>
+  
+            <div class="mb-3">
+              <label for="country">Pais</label>
+              <input type="text" readonly class="form-control" id="address2" formControlName="pais">
+            </div>
+          <hr class="mb-4">
+          <button class="btn btn-primary btn-lg btn-block" type="submit" >Crear Chofer</button>
+        </form>
+      </div>
+    </div>
