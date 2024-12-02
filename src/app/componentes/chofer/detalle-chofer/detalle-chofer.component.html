@@ -1,0 +1,20 @@
+<main>
+    <div class="container py-4">
+      <header class="pb-3 mb-1 border-bottom">
+          <h2 class="py-3 text-center">Listado de Chofer</h2>
+      </header>
+  
+      <app-tabla-choferes (eventoChoferSeleccionado)="cargarEventoChoferSeleccionado($event)"></app-tabla-choferes>
+  
+      <div class="row align-items-md-stretch">
+        <div class="col-md-6">
+          <app-chofer-seleccionado [inputDetalleChofer]="choferSeleccionado"></app-chofer-seleccionado>
+        </div>
+        <div class="col-md-6">
+         <app-detalle-pais [inputDetalleChofer]="choferSeleccionado"></app-detalle-pais>
+        </div>
+      </div>
+  
+     
+    </div>
+  </main>

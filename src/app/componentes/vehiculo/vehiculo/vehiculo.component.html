@@ -1,0 +1,21 @@
+  
+  <div class="container py-3">
+    <header>
+      <div class=" align-items-center pb-3 mb-4 border-bottom">
+          <h2 class="py-3 text-center">Lista de Vehiculos</h2>
+      </div>
+      <app-tabla-vehiculo (eventoVehiculoSeleccionado)="cargarVehiculo($event)"></app-tabla-vehiculo>
+    </header>
+  
+    <main>
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+          <app-alta-vehiculo (eventoVehiculoSeleccionado)="cargarVehiculo($event)"></app-alta-vehiculo>
+        </div>
+        <div class="col">
+          <app-modificacion-vehiculo [inputVehiculoSeleccionado]="vehiculoSeleccionado"></app-modificacion-vehiculo>
+        </div>
+        <div class="col">
+          <app-baja-vehiculo [inputVehiculoSeleccionado]="vehiculoSeleccionado"></app-baja-vehiculo>
+        </div>
+      </div>

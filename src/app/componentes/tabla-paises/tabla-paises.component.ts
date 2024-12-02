@@ -8,19 +8,20 @@ import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angul
 @Component({
   selector: 'app-tabla-paises',
   standalone: true,
-  imports: [RouterOutlet,RouterLink,RouterModule,RouterLinkActive,CommonModule,FormsModule,ReactiveFormsModule],
+  imports: [RouterModule,CommonModule,FormsModule,ReactiveFormsModule],
   templateUrl: './tabla-paises.component.html',
   styleUrl: './tabla-paises.component.scss'
 })
 export class TablaPaisesComponent implements OnInit{
   @Output() eventoPaisSeleccionado : EventEmitter<any> = new EventEmitter<any>();
+
   auxPaisesAmericano : Array<any> = [];
   auxPaisesEuropeos : Array<any> = [];
   listaPaisesAmericano : Array<any> = [];
   listaPaisesEuropeos : Array<any> = [];
   continente!:any;
   europeo:boolean = false;
-  africano:boolean = false;
+  americano:boolean = false;
 
   constructor(private apiService : ApiService) { }
 
@@ -34,21 +35,21 @@ export class TablaPaisesComponent implements OnInit{
   }
 
   continenteSeleccionado(){
-    if(this.continente == "Africano"){
+    if(this.continente == "Americano"){
       if(this.listaPaisesAmericano.length != 0){
         this.cargarListaPaisesAmericano();
         this.europeo = false;
-        this.africano = true;
+        this.americano = true;
       }
       this.europeo = false;
-      this.africano = true;
+      this.americano = true;
     }else{
       if(this.listaPaisesEuropeos.length != 0){
         this.cargarListaPaisesEuropeos();
-        this.africano = false;
+        this.americano = false;
         this.europeo = true;
       }
-      this.africano = false;
+      this.americano = false;
       this.europeo = true;
     }
   }

@@ -4,11 +4,13 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 import { UsuarioService } from '../../servicios/usuario.service';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
+import { MostrarPasswordDirective } from '../../directiva/mostrar-password.directive';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterOutlet,RouterLink,RouterModule,RouterLinkActive,CommonModule,FormsModule,ReactiveFormsModule],
+  imports: [RouterLink,RouterModule,CommonModule,FormsModule,ReactiveFormsModule,MostrarPasswordDirective],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -36,16 +38,17 @@ export class LoginComponent implements OnInit{
       this.usuarioService.conectarUsuario(email,true)
       .then(resp =>{
         this.formGroup.reset();
-        this.router.navigate(['/bienvenida']);
+        this.router.navigate(['']);
+        console.log('logeado');
       })
       .catch(error => {
         this.formGroup.reset();
-        // this.popUpMensaje('Error',error.message,true)});
+        this.popUpMensaje('Error','Credenciales Invalidas',true);
       });
      })
      .catch(error => {
       this.formGroup.reset();
-      // this.popUpMensaje('Error',error.message,true)});
+      this.popUpMensaje('Error','Credenciales Invalidas',true);
     });
   }
 
@@ -57,5 +60,13 @@ export class LoginComponent implements OnInit{
   accesoRapidoAdmin(){
     this.formGroup.controls['email'].setValue("admin@email.com");
     this.formGroup.controls['contraseña'].setValue("admin1234");
+  }
+
+  popUpMensaje(titulo : string,mensaje : string,error : boolean){
+    Swal.fire(
+       titulo,
+       mensaje,
+       error ? 'error' : 'success'
+    )
   }
 }

@@ -1,0 +1,13 @@
+<div>
+    <ul class="list-group mb-3" >
+
+          <li class="list-group-item d-flex justify-content-between lh-condensed" >Nombre &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tipo</li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let obj of vehiculos">
+          <button class="btn btn-light" (click)="seleccionarVehiculoEvento(obj)">
+             
+              <h6 class="my-0">{{obj.nombre + ' ' +  obj.tipo}}</h6>
+          </button>
+        </li>
+    </ul>
+  </div>
+

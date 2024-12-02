@@ -4,16 +4,17 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { UsuarioService } from '../../servicios/usuario.service';
 import { GitService } from '../../servicios/git.service';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-bienvenida',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [CommonModule],
   templateUrl: './bienvenida.component.html',
   styleUrl: './bienvenida.component.scss'
 })
 export class BienvenidaComponent implements OnInit{
-  data : any;
+  data : any = null;
 
   constructor(private git : GitService) { }
 

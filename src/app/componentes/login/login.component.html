@@ -1,31 +1,29 @@
-<form class="login-form fondo" id="formContent" [formGroup]="formGroup" (ngSubmit)="login()">
+<form class="login-form fondo" id="formContent" [formGroup]="formGroup" >
     <h2>Login</h2>
     <div class="form-group">
         <label for="nombre">Email</label>
-        <input type="email" id="form3Example3" class="form-control" formControlName="email" />
-				 	<small class="invalid" *ngIf="formGroup.controls['email'].errors?.['required'] && formGroup.controls['email'].touched">El email es requerido</small>
-					<small class="invalid" *ngIf="formGroup.controls['email'].errors?.['email'] && formGroup.controls['email'].touched">El formato es invalido</small>
+        <input type="email" id="form3Example3" class="form-control " formControlName="email" />
+				 	<small class="invalid text-danger warningForm" *ngIf="formGroup.controls['email'].errors?.['required'] 
+                    && formGroup.controls['email'].touched">El email es requerido</small>
+					<small class="invalid text-danger warningForm" *ngIf="formGroup.controls['email'].errors?.['email'] 
+                    && formGroup.controls['email'].touched">El formato es invalido</small>
     </div>
     <div class="form-group">
         <label for="password">Contraseña</label>
-        <input type="password" id="form3Example4" class="form-control"  formControlName="contraseña"/> 
-        <small class="invalid" *ngIf="formGroup.controls['contraseña'].errors?.['required'] && formGroup.controls['contraseña'].touched">La contraseña es requerida</small>
+        <input appMostrarPassword type="password" id="form3Example4" class="form-control"  formControlName="contraseña"/> 
+        <small class="invalid text-danger warningForm" *ngIf="formGroup.controls['contraseña'].errors?.['required'] 
+         && formGroup.controls['contraseña'].touched">La contraseña es requerida</small>
     </div>
     <div class="button-group">
         
-        <button class="login-button" value="Empleado" (click)="accesoRapidoEmpleado()">Inicio Empleado</button>
-        <button class="login-button" value="Admin" (click)="accesoRapidoAdmin()">Inicio Administrador</button>
-        <button class="login-button"  value="Ingresar" type="submit" [disabled]="formGroup.invalid">Login</button>
-        <!-- <button class="register-button" (click)="registro()">Registrarse</button> -->
+        <button class="login-button"  value="Ingresar" type="submit" [disabled]="formGroup.invalid" (click)="login()">Login</button>
+        <button class="login-button" value="Empleado" type="submit" (click)="accesoRapidoEmpleado()">Acceso Empleado</button>
+        <button class="login-button" value="Admin" type="submit" (click)="accesoRapidoAdmin()">Acceso Administrador</button>
+        
         <div class="text-center">
             <p> <a routerLink="/registro" class="link-info">Registrate acá</a></p>
         </div>
     </div>
-    <!-- <strong class="error" *ngIf="loginInvalido"> 
-        Usuario y/o Contraseña Invalidos
-    </strong>
-    <strong *ngIf="validando"> 
-        Validando Credenciales
-    </strong> -->
 </form>
+
 

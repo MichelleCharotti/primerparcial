@@ -1,0 +1,36 @@
+<div class="card mb-4 rounded-3 shadow-sm">
+    <div class="card-header py-3">
+      <h4 class="my-0 fw-normal">Baja</h4>
+    </div>
+    <div class="card-body">
+     
+      <form class="needs-validation" [formGroup]="formGroup" (ngSubmit)="borrar()">
+
+        <div class="col-md-14 mb-3">
+            <label for="firstName">Nombre</label>
+            <input type="text" class="form-control" id="firstName" formControlName="nombre" readonly>
+          </div>
+
+        <div class=" col-md-14 mb-3 ">
+            <label for="firstName" class="form-label">tipo</label>
+            <input type="text" class="form-control" id="firstName" formControlName="tipo" readonly>
+        </div>
+
+
+        <div class="col-md-14 mb-3">
+          <label for="firstName">Cantidad de Ruedas</label>
+          <input type="text" class="form-control" id="firstName" formControlName="cantRueda" readonly>
+        </div>
+
+        <div class="col-md-14 mb-3">
+          <label for="firstName">Capacidad</label>
+          <input type="text" class="form-control" id="firstName" formControlName="capacidad" readonly>
+        </div>
+
+
+        <button class="btn  btn-lg btn-block login-button" type="submit" [disabled]="formGroup.invalid">Borrar</button>
+      </form>
+
+    </div>
+  </div>
+

@@ -1,0 +1,57 @@
+<div class="card mb-4 rounded-3 shadow-sm ">
+    <div class="card-header py-3">
+      <h4 class="my-0 fw-normal">Modificacion</h4>
+    </div>
+    <div class="card-body ">
+     
+      <form class="needs-validation" [formGroup]="formGroup" (ngSubmit)="modificar()">
+
+        <div class="col-md-14 mb-3">
+            <label for="firstName">Nombre</label>
+            <input type="text" class="form-control" id="firstName" formControlName="nombre" readonly>
+          </div>
+
+        <div class=" col-md-14 mb-3 ">
+            <label for="firstName" class="form-label">tipo</label>
+            <select class="form-select" aria-label="Default select example" id="firstName" formControlName="tipo">
+                <option value="terrestre">Terrestre</option>
+                <option value="aereo">Aereo</option>
+                <option value="maritimo">Maritimo</option>
+            </select>
+            <small class="invalid text-danger warningForm" *ngIf="formGroup.controls['tipo'].errors?.['required']
+             && formGroup.controls['tipo'].touched">Debe seleccionar una opcion.</small>
+        </div>
+
+
+        <div class="col-md-14 mb-3">
+          <label for="firstName">Cantidad de Ruedas</label>
+          <input type="text" class="form-control" id="firstName" formControlName="cantRueda" max="6">
+          <small class="invalid text-danger warningForm" *ngIf="formGroup.controls['cantRueda'].errors?.['required']
+           && formGroup.controls['cantRueda'].touched">La cantidad de ruedas es requerido</small>
+           <small class="text-danger warningForm" *ngIf=" formGroup.controls['cantRueda'].errors?.['max'] " >
+            Debe ser max 6
+          </small>
+          <small class="invalid text-danger warningForm" *ngIf="formGroup.controls['cantRueda'].errors?.['pattern'] 
+         ">Solo numeros</small>
+        </div>
+
+        <div class="col-md-14 mb-3">
+          <label for="firstName">Capacidad</label>
+          <input type="text" class="form-control" id="firstName" formControlName="capacidad" min="2" max="100">
+          <small class="invalid text-danger warningForm" *ngIf="formGroup.controls['capacidad'].errors?.['required'] 
+          && formGroup.controls['capacidad'].touched">La capacidad es requerido</small>
+          <small class="text-danger warningForm" *ngIf="formGroup.controls['capacidad'].errors?.['min']" >
+            debe ser mayor a 2
+        </small>
+        <small class="text-danger warningForm" *ngIf="formGroup.controls['capacidad'].errors?.['max']" >
+            debe ser menor a 100
+        </small>  
+        <small class="invalid text-danger warningForm" *ngIf="formGroup.controls['capacidad'].errors?.['pattern'] 
+         ">Solo numeros</small>
+        </div>
+
+        <button class="btn  btn-lg btn-block login-button" type="submit" [disabled]="formGroup.invalid">Modificar</button>
+      </form>
+
+    </div>
+  </div>

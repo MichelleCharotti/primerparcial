@@ -8,7 +8,7 @@ import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angul
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [RouterOutlet,RouterLink,RouterModule,RouterLinkActive,CommonModule,FormsModule,ReactiveFormsModule],
+  imports: [RouterLink,RouterModule,CommonModule,FormsModule,ReactiveFormsModule],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.scss'
 })
@@ -33,5 +33,6 @@ export class RegistroComponent {
     const contraseña = this.formGroup.controls['contraseña'].value;
     const perfil = this.formGroup.controls['perfil'].value;
     this.usuarioService.registrar(email,contraseña,perfil);    
+    
   }
 }

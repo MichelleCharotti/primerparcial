@@ -2,33 +2,34 @@ import { Pais } from "./pais";
 
 export class Chofer {
     id !: string;
+    nombre!: string;
     dni!: number;
     edad!: number;
-    nombre!: string;
     nroLicencia!: number; 
+    licenciaProfesional !: boolean;
     pais !: Pais;
-    licenciaProfecional !: boolean;
+    
 
-    constructor(id :string,dni : number,edad : number, nombre : string,nroLicencia:number,pais:Pais,licenciaProfecional:boolean){
+    constructor(id :string, nombre : string, dni : number,edad : number, nroLicencia:number,licenciaProfesional:boolean,pais:Pais){
         this.id = id;
+        this.nombre = nombre;
         this.dni = dni;
         this.edad = edad;
-        this.nombre = nombre;
         this.nroLicencia = nroLicencia;
+        this.licenciaProfesional = licenciaProfesional;
         this.pais = pais;
-        this.licenciaProfecional = licenciaProfecional
     }
 
 
     toJson():any{
         const json ={
             id : this.id,
+            nombre : this.nombre,
             dni : this.dni,
             edad : this.edad,
-            nombre : this.nombre,
             nroLicencia : this.nroLicencia,
+            licenciaProfesional : this.licenciaProfesional,
             pais : this.pais.toJson(),
-            licenciaProfecional : this.licenciaProfecional
         }
         return json;
     }

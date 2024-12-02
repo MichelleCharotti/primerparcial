@@ -1,0 +1,26 @@
+button {
+  width: 212px;
+  margin: 2px 25px;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.login-button {
+  background-color: #7c7698  ;
+  color: #fff;
+}
+
+.login-button:hover, .register-button:hover{
+  background-color: #b2acbd ;
+}
+
+.login-button:disabled{
+  background-color: #7c7698  ;
+  cursor: default;
+}
+

@@ -1,0 +1,13 @@
+.login-button {
+    background-color: #7c7698  ;
+    color: #fff;
+  }
+  
+  .login-button:hover, .register-button:hover{
+    background-color: #b2acbd ;
+  }
+
+  .login-button:disabled{
+    background-color: #7c7698  ;
+    cursor: default;
+  }
