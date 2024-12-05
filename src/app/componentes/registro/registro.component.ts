@@ -33,7 +33,8 @@ export class RegistroComponent {
     const email = this.formGroup.controls['email'].value;
     const contraseña = this.formGroup.controls['contraseña'].value;
     const perfil = this.formGroup.controls['perfil'].value;
-    this.usuarioService.registrar(email,contraseña,perfil);    
+    const terminos = false;
+    this.usuarioService.registrar(email,contraseña,perfil,terminos);    
     
   }
 }

@@ -54,31 +54,59 @@ obtenerUsuarioPorEmail(email:string) {
   this.db.collection(this.dbPath, ref => ref.where('email','==', email)).valueChanges().subscribe(users => resolve(users))})
 }
 
-async conectarUsuario(email:string,login:boolean, perfil ?: string){
+async conectarUsuario(email:string,login:boolean, perfil ?: string, terminos ?: boolean){
   await this.obtenerUsuarioPorEmail(email)
    .then(res =>{
     if(login){
-      let user : Usuario = new Usuario(res[0].id,res[0].email,res[0].perfil);
+      let user : Usuario = new Usuario(res[0].id,res[0].email,res[0].perfil,res[0].terminos);
       localStorage.setItem('user',JSON.stringify(user));
       this.angularF.collection(this.dbPath).doc(res[0].id).update(user.toJson());
     }else{
       let id = this.angularF.createId();
-      let user : Usuario = new Usuario(id,email,perfil);
+      let user : Usuario = new Usuario(id,email,perfil,terminos);
       localStorage.setItem('user',JSON.stringify(user));
       this.angularF.collection(this.dbPath).doc(id).set(user.toJson());
-      this.router.navigate(['']);
+
+      
+
+      // this.router.navigate(['']);
       console.log('Registrado');
     }
   })
   .catch(error => console.log(error));
 }
 
-registrar(email:string,contraseña:string, perfil ?: string){
+obtenerUsuarioTermino():boolean{
+  let obj = JSON.parse(localStorage.getItem('user')!);
+  
+  return obj.termino;
+}
+
+
+async conectarUsuarioTerminos(email:string, terminos : boolean){
+
+  await this.obtenerUsuarioPorEmail(email)
+   .then(res =>{
+      let user : Usuario = new Usuario(res[0].id,res[0].email,res[0].perfil,terminos);
+      localStorage.setItem('user',JSON.stringify(user));
+      this.angularF.collection(this.dbPath).doc(res[0].id).update(user.toJson());
+      console.log('mail correcto');
+  })
+  .catch(error => console.log(error));
+
+}
+
+registrar(email:string,contraseña:string, perfil ?: string, terminos ?: boolean){
   this.authService.createUserWithEmailAndPassword(email,contraseña)
   .then(res =>{
-    this.conectarUsuario(email,false,perfil);
+    this.conectarUsuario(email,false,perfil,terminos);
+
+    this.popUpMensaje('Registrado','Debe aceptar los terminos y condiciones',false);
+
+    this.router.navigate(['/terminos']);
   })
   .catch(error => this.popUpMensaje('Error',error.message,true));
+
 }
 
 cerrarSesion() {

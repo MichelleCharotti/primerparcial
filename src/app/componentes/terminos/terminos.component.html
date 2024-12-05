@@ -1,0 +1,39 @@
+<div class="background ">
+	<section class="text-center text-lg-start ">
+
+				<div class="card-body p-5 shadow-5 text-center form-control">
+				  <h2 class="fw-bold mb-5">Terminos y condiciones</h2>
+                  <p>Ingrese mail con que se registro y acepte los terminos y condiciones</p>
+				  <form [formGroup]="formGroup" (ngSubmit)="continuar()">
+                    
+
+                    <div class="mb-3">
+                        <label for="edad">edad</label>
+                        <input type="number" class="form-control" id="edad" formControlName="edad" min="18" max="65">
+                        <small class="invalid text-danger warningForm" *ngIf="formGroup.controls['edad'].errors?.['required'] 
+                        && formGroup.controls['edad'].touched">el edad es requerida</small>
+                        <small class="text-danger warningForm" *ngIf="formGroup.controls['edad'].errors?.['min']" >
+                            debe ser mayor a 18
+                        </small>
+                        <small class="text-danger warningForm" *ngIf="formGroup.controls['edad'].errors?.['max']" >
+                            debe ser menor a 65
+                        </small>  
+                    
+                    </div>
+
+                    
+                    <div class="form-check  mt-3 mb-4">
+                        <input class="form-check-input " type="checkbox" id="terminos" formControlName="terminos"  />
+                        <label class="form-check-label" for="terminos"> Acepto terminos y condiciones</label>
+                        <small class="invalid text-danger warningForm" *ngIf="formGroup.controls['terminos'].errors?.['required'] 
+						 && formGroup.controls['terminos'].touched">Es requerido</small>
+                    </div>
+
+					<button type="submit" class="btn btn-primary btn-block mb-4 register-button" 
+                    [disabled]="formGroup.invalid ">Continuar</button>
+			
+				  </form>
+				</div>
+	  </section>
+	</div>
+

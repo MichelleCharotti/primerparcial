@@ -4,6 +4,7 @@ import { AltaChoferComponent } from './componentes/alta-chofer/alta-chofer.compo
 import { AuthGuard } from '@angular/fire/auth-guard';
 import { VehiculoComponent } from './componentes/vehiculo/vehiculo/vehiculo.component';
 import { adminGuard } from './guard/admin.guard';
+import { terminoGuard } from './guard/termino.guard';
 
 export const routes: Routes = [
     { path: 'bienvenida', component: BienvenidaComponent },
@@ -20,5 +21,9 @@ export const routes: Routes = [
     },
     {path: 'vehiculo', component: VehiculoComponent,
         canActivate:[adminGuard]
+    },
+    {path: 'terminos', 
+        loadComponent: () => import('./componentes/terminos/terminos.component').then(m => m.TerminosComponent),
+        canDeactivate:[terminoGuard]
     },
 ];

@@ -32,13 +32,7 @@ export class VehiculoService {
    }
 
    obtenerVehiculo(){
-    // let aux : Array<Vehiculo> = [];
-    // this.vehiculos.forEach(element => {
-    //   element.forEach(res => {
-    //           aux.push(res);
-    //   });
-    // });
-    // return aux;
+  
 
     return this.vehiculoColeccion.valueChanges();
 
