@@ -14,18 +14,12 @@
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="dni">dni</label>
-            <input type="text" class="form-control" id="dni" formControlName="dni" maxLength="8" minLenght="8">
+            <input type="text" class="form-control" id="dni" formControlName="dni" >
             <small class="invalid text-danger warningForm" *ngIf="formGroup.controls['dni'].errors?.['required'] 
             && formGroup.controls['dni'].touched">El dni es requerido</small>
           <small class="invalid text-danger warningForm" *ngIf="formGroup.controls['dni'].errors?.['pattern'] 
-           ">Solo numeros</small>
+           ">Solo numeros y debe ser de 8 digitos</small>
           
-          <small class="text-danger warningForm" *ngIf="formGroup.controls['dni'].errors?.['maxLength']" >
-            Debe ser 8
-          </small>
-          <small class="text-danger warningForm" *ngIf="formGroup.controls['dni'].errors?.['minLenght']" >
-            Debe ser min8
-          </small>
         </div>
         
           

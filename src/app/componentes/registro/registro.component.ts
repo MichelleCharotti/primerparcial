@@ -4,11 +4,12 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { UsuarioService } from '../../servicios/usuario.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { MostrarPasswordDirective } from '../../directiva/mostrar-password.directive';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [RouterLink,RouterModule,CommonModule,FormsModule,ReactiveFormsModule],
+  imports: [RouterLink,RouterModule,CommonModule,FormsModule,ReactiveFormsModule, MostrarPasswordDirective],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.scss'
 })
@@ -23,7 +24,7 @@ export class RegistroComponent {
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       'email' : ['',[Validators.required,Validators.email]],
-      'contraseña' : ['',Validators.required],
+      'contraseña' : ['',[Validators.required,Validators.minLength(6)]],
       'perfil' : ['',[Validators.required,Validators.nullValidator]]
     });
   }

@@ -23,10 +23,14 @@
 
 					<div class="form-outline mb-4">
 					<label class="form-label" for="form3Example4">Contraseña</label>
-					  <input type="password" id="form3Example4" class="form-control"  formControlName="contraseña"/> 
+					  <input appMostrarPassword type="password" id="form3Example4" class="form-control"  formControlName="contraseña" minlength="6" /> 
 						  <small class="invalid text-danger warningForm" *ngIf="formGroup.controls['contraseña'].errors?.['required'] 
 						  && formGroup.controls['contraseña'].touched">La contraseña es requerida</small>
+						   <small class="text-danger warningForm" *ngIf="formGroup.controls['contraseña'].errors?.['minlength']" >
+							Debe ser minimo 6
+						  </small>
 					</div>
+
 					<button type="submit" class="btn btn-primary btn-block mb-4 register-button" [disabled]="formGroup.invalid">Registrar</button>
 					<div class="text-center">
 						<p><a routerLink="/login" class="link-info">Inicia Sesión</a></p>

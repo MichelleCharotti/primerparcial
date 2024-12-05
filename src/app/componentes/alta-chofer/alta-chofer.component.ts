@@ -25,7 +25,7 @@ export class AltaChoferComponent implements OnInit {
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       'nombre' : ['',[Validators.required,Validators.pattern(/^[A-Za-z\s\xF1\xD1]+$/)]],
-      'dni' : ['',[Validators.required,,Validators.minLength(8),Validators.maxLength(8),Validators.pattern(/^([0-9])*$/)]],
+      'dni' : ['',[Validators.required,Validators.pattern(/^\d{8}$/)]],
       'edad' : ['',[Validators.required,Validators.min(18),Validators.max(50)]],
       'nroLicencia' : ['',[Validators.required,Validators.minLength(7),Validators.maxLength(20),Validators.pattern(/^([0-9])*$/)]],
       'licenciaProfesional' : [false],

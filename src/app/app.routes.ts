@@ -3,6 +3,7 @@ import { BienvenidaComponent } from './componentes/bienvenida/bienvenida.compone
 import { AltaChoferComponent } from './componentes/alta-chofer/alta-chofer.component';
 import { AuthGuard } from '@angular/fire/auth-guard';
 import { VehiculoComponent } from './componentes/vehiculo/vehiculo/vehiculo.component';
+import { adminGuard } from './guard/admin.guard';
 
 export const routes: Routes = [
     { path: 'bienvenida', component: BienvenidaComponent },
@@ -17,5 +18,7 @@ export const routes: Routes = [
         loadComponent: () => import('./componentes/chofer/detalle-chofer/detalle-chofer.component').then(m => m.DetalleChoferComponent),
         canActivate:[AuthGuard]
     },
-    {path: 'vehiculo', component: VehiculoComponent,canActivate:[AuthGuard]},
+    {path: 'vehiculo', component: VehiculoComponent,
+        canActivate:[adminGuard]
+    },
 ];
