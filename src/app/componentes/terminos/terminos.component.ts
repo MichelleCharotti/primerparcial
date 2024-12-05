@@ -23,7 +23,6 @@ export class TerminosComponent {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      // 'email' : ['',[Validators.required,Validators.email]],
       'edad' : ['',[Validators.required,Validators.min(18),Validators.max(65)]],
       'terminos' : ['',[Validators.required]],
     });
@@ -31,7 +30,6 @@ export class TerminosComponent {
 
   async continuar() {
 
-    // const email = this.formGroup.controls['email'].value;
     const edad = this.formGroup.controls['edad'].value;
     const terminos = this.formGroup.controls['terminos'].value;
 
@@ -39,9 +37,6 @@ export class TerminosComponent {
 
     const emailLogueado=this.usuarioService.obtenerEmailUsuarioLogueado();
 
-    // console.log(emailLogueado);
-    
-    // if(emailLogueado===email && emailLogueado!=undefined)
 
     if(terminos && edad !=undefined)
       {
