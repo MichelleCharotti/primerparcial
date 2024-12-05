@@ -18,7 +18,6 @@ export class TerminosComponent {
   constructor(
     private formBuilder : FormBuilder,
     private router: Router,
-    private authService: AngularFireAuth,
     private usuarioService : UsuarioService) { }
 
   ngOnInit(): void {
